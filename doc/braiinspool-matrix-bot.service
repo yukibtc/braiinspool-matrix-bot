@@ -1,0 +1,21 @@
+[Unit]
+Description=BraiinsPool Matrix Bot
+
+[Service]
+ExecStart=/path/to/braiinspool-matrix-bot/target/release/braiinspool-matrix-bot
+User=<yourusername>
+Group=<yourgroup>
+Type=simple
+KillMode=process
+Restart=always
+RestartSec=60
+Environment="RUST_BACKTRACE=1"
+
+# Hardening measures
+PrivateTmp=true
+ProtectSystem=full
+NoNewPrivileges=true
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,25 @@
+##
+## BraiinsPool Matrix Bot configuration file. Lines beginning with # are comments.
+##
+
+# Directory where data should be stored (default: ~/.braiinspool_bot)
+# main_path = "/path/to/save/braiinspool_bot/data"    
+
+# Console log level: TRACE, DEBUG, INFO, WARN, ERROR (default: INFO)
+# log_level = "INFO"
+
+# Work only for BraiinsPool API and NOT for Matrix (default: None)
+proxy = "socks5h://127.0.0.1:9050"
+
+[matrix]
+# Your local, onion or clearnet homeserver url
+homeserver_url = "http://localhost:8008"      
+
+# Matrix Bot user_id
+user_id = "@username:example.com"         
+
+# Matrix Bot password
+password = "yourpassword"         
+
+# Needed if you want use onion homeserver url (default: None)
+# proxy = "socks5h://127.0.0.1:9050"
