@@ -5,9 +5,9 @@ edition = "2021"
 description = "BraiinsPool Matrix Bot"
 authors = ["Yuki Kishimoto <yukikishimoto@proton.me>"]
 license = "MIT"
-homepage = "https://gitlab.com/p2kishimoto/braiinspool-matrix-bot"
-repository = "https://gitlab.com/p2kishimoto/braiinspool-matrix-bot.git"
-keywords = ["bitcoin", "braiins", "braiinspool", "slushpool", "mining", "matrix"]
+homepage = "https://github.com/yukibtc/braiinspool-matrix-bot"
+repository = "https://github.com/yukibtc/braiinspool-matrix-bot.git"
+keywords = ["bitcoin", "braiins", "slushpool", "mining", "matrix"]
 readme = "README.md"
 
 [dependencies]
@@ -15,7 +15,7 @@ bpns-rocksdb = { git = "https://gitlab.com/p2kishimoto/bpns", rev = "52989b7737b
 chrono = "0.4.19"
 clap = { version = "3.0.14", features = ["derive"] }
 dirs = "4.0.0"
-braiinspool = { git = "https://gitlab.com/p2kishimoto/braiinspool-rust-sdk", rev = "2ced17fe89c4110cf9f89b80e3d309fe1a1785cc" }
+braiinspool = "0.1.1"
 env_logger = "0.9.0"
 lazy_static = "1.4.0"
 log = "0.4.14"

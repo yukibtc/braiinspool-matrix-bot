@@ -26,7 +26,7 @@ pub enum Error {
     MatrixClientBuilder(matrix_sdk::ClientBuildError),
     MatrixStore(matrix_sdk::StoreError),
     MatrixCryptoStore(matrix_sdk::store::OpenStoreError),
-    SlushPool(braiinspool::client::Error),
+    BraiinsPool(braiinspool::client::Error),
 }
 
 impl Bot {
@@ -69,7 +69,7 @@ impl Bot {
             log::debug!("Login with credentials...");
             let username = user_id_boxed.localpart();
             client
-                .login(username, password, None, Some("SlushPool Bot"))
+                .login(username, password, None, Some("BraiinsPool Bot"))
                 .await?;
 
             log::debug!("Getting session data...");
@@ -149,7 +149,7 @@ impl Bot {
                     if STORE.user_exist(user_id) {
                         let user = STORE.get_user(user_id)?;
 
-                        let client = BraiinsPoolClient::new(user.token.as_str(), proxy);
+                        let client = BraiinsPoolClient::new(user.token.as_str(), proxy)?;
 
                         let obj = client.user_profile().await?;
 
@@ -203,7 +203,7 @@ impl Bot {
                     if STORE.user_exist(user_id) {
                         let user = STORE.get_user(user_id)?;
 
-                        let client = BraiinsPoolClient::new(user.token.as_str(), proxy);
+                        let client = BraiinsPoolClient::new(user.token.as_str(), proxy)?;
 
                         let obj = client.workers().await?;
 
@@ -248,7 +248,7 @@ impl Bot {
                     if STORE.user_exist(user_id) {
                         let user = STORE.get_user(user_id)?;
 
-                        let client = BraiinsPoolClient::new(user.token.as_str(), proxy);
+                        let client = BraiinsPoolClient::new(user.token.as_str(), proxy)?;
 
                         let obj = client.daily_rewards().await?;
 
@@ -272,7 +272,7 @@ impl Bot {
                     if STORE.user_exist(user_id) {
                         let user = STORE.get_user(user_id)?;
 
-                        let client = BraiinsPoolClient::new(user.token.as_str(), proxy);
+                        let client = BraiinsPoolClient::new(user.token.as_str(), proxy)?;
 
                         let obj = client.pool_stats().await?;
 
@@ -329,7 +329,7 @@ impl Bot {
                     }
                 }
                 "!checktor" => {
-                    let client = BraiinsPoolClient::new("", proxy);
+                    let client = BraiinsPoolClient::new("", proxy)?;
 
                     let is_tor: bool = client.check_tor_connection().await?;
 
@@ -406,6 +406,6 @@ impl From<matrix_sdk::store::OpenStoreError> for Error {
 
 impl From<braiinspool::client::Error> for Error {
     fn from(err: braiinspool::client::Error) -> Self {
-        Error::SlushPool(err)
+        Error::BraiinsPool(err)
     }
 }
