@@ -3,7 +3,7 @@
 ## Download source code
 
 ```
-git clone https://gitlab.com/p2kishimoto/braiinspool-matrix-bot.git && cd braiinspool-matrix-bot
+git clone https://github.com/yukibtc/braiinspool-matrix-bot.git && cd braiinspool-matrix-bot
 ```
 
 ## Verify commits
